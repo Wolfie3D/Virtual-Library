@@ -1,0 +1,13 @@
+{% extends 'base.html' %} 
+
+<h1>{% block header %}AEY GROUP LIBRARY LIST OF BOOKS {% endblock header %} </h1>
+
+
+{%block content %}
+  <p>These are the books:</p>
+  <ul>
+    {% for book in available_books %}
+      <li>Title: {{ book.name}}  ISBN: {{ book.isbn }} </li>
+    {% endfor %}
+  </ul>
+{% endblock content %}
