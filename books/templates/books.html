@@ -5,9 +5,22 @@
 
 {%block content %}
   <p>These are the books:</p>
-  <ul>
-    {% for book in available_books %}
-      <li>Title: {{ book.name}}  ISBN: {{ book.isbn }} </li>
-    {% endfor %}
-  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>ISBN</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in available_books %}
+        <tr>
+          <td>{{ book.id }}</td>
+          <td>{{ book.title }}</td>
+          <td>{{ book.isbn }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock content %}
