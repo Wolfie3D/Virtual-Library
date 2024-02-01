@@ -1,0 +1,75 @@
+{% extends 'index.html' %}
+
+<h1>{% block header %}RECORD THE AUTHOR {% endblock header %}</h1>
+
+{%block content %}
+
+<form
+  action="/insertauthor"
+  method="post"
+>
+  {% csrf_token %}
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter the Author's Name"
+      name="name"
+      required
+    />
+  </div>
+  <br />
+  <div class="form-group">
+    <select
+      id="gender"
+      class="form-control"
+      name="gender"
+      required
+    >
+      <option selected>Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="others">Others</option>
+    </select>
+  </div>
+  <br />
+  <div class="form-group">
+    <input
+      type="number"
+      class="form-control mt-2"
+      placeholder="Enter the Author's Age"
+      name="age"
+      required
+    />
+  </div>
+  <br />
+  <div class="form-group">
+    <input
+      class="form-control mt-2"
+      placeholder="Enter the Author's country"
+      name="country"
+      required
+    />
+  </div>
+  <br />
+  <div class="form-group">
+    <input
+      class="form-control mt-2"
+      placeholder="Enter the Author's Genre"
+      name="genre"
+      required
+    />
+  </div>
+
+  <br />
+  <div class="d-grid gap-2">
+    <button
+      class="btn btn-success"
+      type="submit"
+    >
+      Submit
+    </button>
+  </div>
+</form>
+
+{% endblock content %}
