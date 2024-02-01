@@ -29,14 +29,25 @@ def authors(request):
 
 def insertbook(request):
     if request.method == "POST":
-        isbn = request.POST.get('isbn')
         title = request.POST.get('title')
-        query = Book(title=title, isbn=isbn)
+        isbn = request.POST.get('isbn')
+        author = request.POST.get('author')
+        
+        author_instance = Author.objects.get(author_id=author)
+        
+        query = Book(title=title, isbn=isbn, author=author_instance)
         query.save()
-        messages.info(request, "Book Inserted Successfully")
-        return redirect("books/")
+        messages.success(request, "Book Inserted Successfully")
+        return redirect('books')
+    
+    authors = Author.objects.values_list('author_id', flat=True)
+    authors_name= Author.objects.values_list('name', flat=True)
     template = loader.get_template('bookInsert.html')
-    return HttpResponse(template.render(request))
+    context = {
+        "authors" : authors,
+        'authors_name' : authors_name,
+        }
+    return HttpResponse(template.render(context, request))
 
 
 def insertauthor(request):
@@ -46,38 +57,45 @@ def insertauthor(request):
         age = request.POST.get('age')
         country = request.POST.get('country')
         genre = request.POST.get('genre')
-        if not name or not gender or not age or not country or not genre:
-            messages.error(request, "All fields are required.")
-            return redirect("authors/")
+
         query = Author(name=name, gender=gender, age=age,
                        country=country, genre=genre)
         query.save()
+        
         messages.success(request, "Author Inserted Successfully")
-        return redirect("authors/")
+        
+        return redirect('authors')
+
     template = loader.get_template('authorInsert.html')
     context = {}
     return HttpResponse(template.render(context, request))
 
 
-# def updateData(request,id):
-#     if request.method=="POST":
-#         name=request.POST['name']
-#         email=request.POST['email']
-#         age=request.POST['age']
-#         gender=request.POST['gender']
+# def update_author(request, author_id):
+#     author = Author.objects.filter(author_id=author_id).values()
 
-#         edit=Student.objects.get(id=id)
-#         edit.name=name
-#         edit.email=email
-#         edit.gender=gender
-#         edit.age=age
-#         edit.save()
-#         messages.warning(request,"Data Updated Successfully")
-#         return redirect("/")
+#     if request.method == "POST":
+#         name = request.POST.get('name')
+#         gender = request.POST.get('gender')
+#         age = request.POST.get('age')
+#         country = request.POST.get('country')
+#         genre = request.POST.get('genre')
+        
+#         author.name = name
+#         author.gender = gender
+#         author.age = age
+#         author.country = country
+#         author.genre = genre
+#         author.save()
 
-#     d=Student.objects.get(id=id)
-#     context={"d":d}
-#     return render(request,"edit.html",context)
+#         messages.warning(request, "Data Updated Successfully")
+#         return redirect('authors')
+#     context = {"author": author}
+#     return render(request, "updateAuthor.html", context)
+
+
+
+
 
 # def deleteData(request,id):
 #     d=Student.objects.get(id=id)

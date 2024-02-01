@@ -5,7 +5,7 @@
 {%block content %}
 
 <form
-  action="/insertauthor"
+  action="{% url 'insertauthor' %}"
   method="post"
 >
   {% csrf_token %}

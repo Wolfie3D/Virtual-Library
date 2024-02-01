@@ -5,8 +5,8 @@ urlpatterns = [
     path("", views.index, name='index'),
     path("books/", views.books, name='books'),
     path("authors/", views.authors, name='authors'),
-    path('authors/insertauthor/',views.insertauthor,name="insertauthor"),
-    path('books/insertbook/',views.insertbook,name="insertbook"),
-    # path('update/<id>',views.updateData,name="updateData"),
+    path('insertauthor/', views.insertauthor, name="insertauthor"),
+    path('insertbook/', views.insertbook, name="insertbook"),
+    # path('update_author/<author_id>/', views.update_author, name='update_author'),
     # path('delete/<id>',views.deleteData,name="deleteData"),
 ]

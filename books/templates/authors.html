@@ -3,7 +3,7 @@
 {% block header %}AEY GROUP LIBRARY LIST OF AUTHORS {% endblock header %} 
 
 {%block content %}
-<td><a type="button" href="insertauthor/" class="btn btn-outline-danger">Add Author</a></td>
+<td><a type="button" href="/insertauthor" class="btn btn-outline-danger">Add Author</a></td>
 
   <h1>These are the authors:</h1>
 
@@ -23,13 +23,13 @@
   <tbody>
     {% for authors in available_authors %}
       <tr>
-        <th scope="row">{{authors.id}}</th>
+        <td >{{authors.author_id}}</td>
         <td>{{ authors.name }}</td>
         <td>{{ authors.gender }}</td>
         <td>{{ authors.age }}</td>
         <td>{{ authors.country }}</td>
         <td>{{ authors.genre }}</td>
-        <td><a type="button" href="/update/{{authors.id}}" class="btn btn-outline-primary">Edit</a></td>
+        <td><a href="/" class="btn btn-outline-primary">Edit</a></td>
         <td><a type="button" href="/delete/{{authors.id}}" class="btn btn-outline-danger">Delete</a></td>
       </tr>
     {% endfor %}

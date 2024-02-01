@@ -1,19 +1,16 @@
-{% extends 'base.html' %}
-
-<h1>{% block header %}RECORD A BOOKS {% endblock header %}</h1>
-
-{%block content %}
+{% extends 'index.html' %} {% block content %}
 
 <form
-  action="/insertbook"
+  action="{% url 'insertbook' %}"
   method="post"
 >
   {% csrf_token %}
+  <h1>{% block book_header %}RECORD A BOOK{% endblock book_header %}</h1>
   <div class="form-group">
     <input
       type="text"
       class="form-control"
-      placeholder="Enter Books title"
+      placeholder="Enter Book's title"
       name="title"
       required
     />
@@ -29,13 +26,24 @@
     />
   </div>
 
+  <div class="form-group">
+    <label for="author">Select Author:</label>
+    <select id="author" class="form-control" name="author" required>
+      <option value="" selected disabled>Select Author</option>
+      {% for author in authors %}
+        <option >{{ author}}</option>
+      {% endfor %}
+    </select>
+  </div>
+
   <div class="d-grid gap-2">
     <button
       class="btn btn-success"
       type="submit"
     >
-      Submit
+      Submit Book
     </button>
   </div>
 </form>
+
 {% endblock content %}

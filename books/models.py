@@ -1,10 +1,11 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Author(models.Model):
     author_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, )
     gender = models.CharField(max_length=10)
-    age = models.IntegerField()
+    age = models.IntegerField(validators=[MinValueValidator(5), MaxValueValidator(100)])
     country = models.CharField(max_length=50)
     genre = models.CharField(max_length=50)
     
@@ -19,4 +20,4 @@ class Book(models.Model):
     
     
     def __repr__(self):
-        return f"<book {self.book_id}: {self.title}>"
+        return f"<book {self.title}>"
