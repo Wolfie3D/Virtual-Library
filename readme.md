@@ -26,3 +26,20 @@ The project is structured as a Django web app with a focus on managing books and
 . Update Author (update_author): Enables the modification of author information.
 
 . Update Book (update_book): Enables the modification of book information.
+
+
+## Installation
+### Clone the repository:
+git clone (https://github.com/Wolfie3D/Virtual-Library/tree/master )
+
+### Install dependencies:
+conda env export > environment.yml
+
+## Run migrations:
+python manage.py migrate
+## Usage
+Start the Django development server:
+
+python manage.py runserver
+
+Access the web app in your browser at http://localhost:8000/.
