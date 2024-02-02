@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+
+<h1>
+  {% block header %}these are the details of: {{ book.title }} {% endblock header%}
+</h1>
+
+{%block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Book ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">ISBN</th>
+      <th scope="col">Author</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{book.id}}</td>
+      <td>{{ book.title }}</td>
+      <td>{{ book.isbn }}</td>
+      <td>{{ book.author.name }}</td>
+    </tr>
+  </tbody>
+</table>
+{% endblock content %}

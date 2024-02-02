@@ -1,18 +1,19 @@
 {% extends 'index.html' %}
 
-<h1>{% block header %}AEY GROUP LIBRARY LIST OF BOOKS {% endblock header %}</h1>
+<h4>{% block header %}AEY GROUP LIBRARY LIST OF BOOKS {% endblock header %}</h4>
 
 {%block content %}
-<td><a type="button" href="/insertbook" class="btn btn-outline-danger">Add Book</a></td>
-<p>These are the books:</p>
-<table class="table">
+<td><a type="button" href="{% url 'insertbook' %}" class="btn btn-outline-primary" >Add Book</a></td>
+<br />
+<h5>These are the available books:</h5>
+<table class="table table-dark table-striped">
   <thead>
     <tr>
-      <th scope="col">ID</th>
+      <th scope="col">Book ID</th>
       <th scope="col">Title</th>
       <th scope="col">ISBN</th>
       <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
+      <th scope="col">Details</th>
     </tr>
   </thead>
   <tbody>
@@ -24,7 +25,7 @@
       <td>
         <a
           type="button"
-          href="/"
+          href="/update_author/{{author_id}}"
           class="btn btn-outline-primary"
           >Edit</a
         >
@@ -32,12 +33,13 @@
       <td>
         <a
           type="button"
-          href="/delete/{{book.id}}"
+          href="{% url 'book_details' book.id %}"
           class="btn btn-outline-danger"
-          >Delete</a
+          >Details</a
         >
       </td>
     </tr>
-    {% endfor %} {% endblock content %}
+    {% endfor %} 
   </tbody>
 </table>
+{% endblock content %}

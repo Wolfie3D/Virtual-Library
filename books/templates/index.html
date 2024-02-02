@@ -16,17 +16,18 @@
 
     <title>AEY GROUP LIBRARY</title>
   </head>
-  <body>
-    <h1><a href="/">Home</a></h1>
-        <h1>{% block header %}WELCOME TO AEY GROUP LIBRARY{% endblock header %}</h1>
-    <main class = 'container-sm'>
-  
+  <body >
+    <div class="container-fluid">
+    <h5><a href="/">Home</a></h5>
+        <h4>{% block header %}WELCOME TO AEY GROUP LIBRARY{% endblock header %}</h4>
+    <main >
       {% block content %}
       </h1>
       <nav>
+        <p>Ensure that you register author prior registering a book</p>
         <ul>
-          <li><a href="books/">Books</a></li>
           <li><a href="authors/">Authors</a></li>
+          <li><a href="books/">Books</a></li>
         </ul>
       </nav>
       {% endblock content %}
@@ -36,5 +37,6 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"
   ></script>
+  </div>
   </body>
 </html>

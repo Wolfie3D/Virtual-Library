@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+
+<h2> {% block header %}updating a record{% endblock header %} </h2>
+
+<h3> {% block book_header %}update the {{book.title}} record{% endblock book_header%} </h3>
+
+{% block content %}
+<p>you are updating the {{book.title}} record</p>
+
+<form
+  method="POST"
+  action="{% url 'update_book' book.id  %}"
+>
+  {% csrf_token %}
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      value="{{book.title}}"
+      name="name"
+      required
+    />
+  </div>
+  <br />
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      value="{{book.isbn}}"
+      name="name"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <input
+      type="number"
+      class="form-control mt-2"
+      value="{{book.author.name}}"
+      name="age"
+      required
+    />
+  </div>
+  <br />
+
+  <br />
+  <div class="d-grid gap-2">
+    <button
+      class="btn btn-success"
+      type="submit"
+    >
+      Submit
+    </button>
+  </div>
+</form>
+
+{% endblock content %}

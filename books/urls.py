@@ -7,6 +7,8 @@ urlpatterns = [
     path("authors/", views.authors, name='authors'),
     path('insertauthor/', views.insertauthor, name="insertauthor"),
     path('insertbook/', views.insertbook, name="insertbook"),
-    # path('update_author/<author_id>/', views.update_author, name='update_author'),
-    # path('delete/<id>',views.deleteData,name="deleteData"),
+    path('book/<id>', views.book_details, name="book_details"),
+    path('author/<id>', views.author_details, name="author_details"),
+    path('update_author/<id>/', views.update_author, name='update_author'),
+    path('update_book/<id>/', views.update_book, name='update_book'),
 ]
